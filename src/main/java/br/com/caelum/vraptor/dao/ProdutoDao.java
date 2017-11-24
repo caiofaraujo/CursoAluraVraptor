@@ -2,6 +2,7 @@ package br.com.caelum.vraptor.dao;
 
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
 import br.com.caelum.vraptor.model.Produto;
@@ -9,13 +10,21 @@ import br.com.caelum.vraptor.model.Produto;
 public class ProdutoDao {
 
 	private final EntityManager em;
-
+	
+	@Inject
 	public ProdutoDao(EntityManager em) {
 		this.em = em;
 	}
 	
+	@Deprecated
+	public ProdutoDao() {
+		this(null);
+	}
+	
 	public void adiciona(Produto produto) {
+		em.getTransaction().begin();
 		em.persist(produto);
+		em.getTransaction().commit();
 	}
 
 	public void remove(Produto produto) {

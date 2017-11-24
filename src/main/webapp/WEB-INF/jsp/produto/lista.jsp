@@ -17,18 +17,39 @@
 				<th>Nome</th>
 				<th>Valor</th>
 				<th>Quantidade</th>
+				<th align=center>Adicionar</th>
+				<th align=center>Editar</th>
+				<th align=center>Excluir</th>
 			</tr>
 		</thead>
 		<tbody>
 		<c:forEach items="${produtoList}" var="produto">
 			<tr>
 				<td>${produto.nome}</td>
-				<td>${produto.valor}</td>
-				<td>${produto.quantidade}</td>
+				<td >${produto.valor}</td>
+				<td >${produto.quantidade}</td>
+				<td align=center>
+					<a href="<c:url value='/produto/formulario' />" class="btn-sm btn-sucess btn-primary ">
+						 <span class="glyphicon glyphicon-plus"></span>
+					</a>
+				</td>
+				<td align=center>
+					<a href="<c:url value='/produto/edita' />" class="btn-sm btn-primary a-btn-slide-text" >
+						<span class="glyphicon glyphicon-edit"></span>
+					</a>
+				</td>
+				<td align=center>
+					<a href="<c:url value='/produto/remove?produto.id=${produto.id}' />" class="btn btn-sm btn-secondary btn-danger" > 
+						<span class="glyphicon glyphicon-trash"></span>
+					</a>
+				</td>
 			</tr>
 		</c:forEach>
 		</tbody>
 	</table>
+	<c:if test="${not empty mensagem}">
+    	<div class="alert alert-success">${mensagem}</div>
+	</c:if>
 </div>
 </body>
 </html>
