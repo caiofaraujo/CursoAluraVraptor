@@ -25,6 +25,11 @@
 				<button type="submit" class="btn btn-primary" value="Adicionar">Adicionar</button>
 			</div>
 		</form>
+		<c:forEach items="${errors}" var="erro"> 
+			<div class="alert alert-danger">
+				${erro.category} - ${erro.message}
+			</div>
+		</c:forEach>
 	</div>
 </body>
 </html>
