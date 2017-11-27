@@ -43,6 +43,10 @@
 						<span class="glyphicon glyphicon-trash"></span>
 					</a>
 				</td>
+				<td>
+					<c:url value='/produto/enviaPedidoDeNovosItens?produto.nome=${produto.nome}' var="url"/>
+					<a href="${url }">Solicitar mais itens</a>
+				</td>
 			</tr>
 		</c:forEach>
 		</tbody>
